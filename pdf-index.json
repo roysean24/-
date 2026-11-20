@@ -1,0 +1,14 @@
+---
+layout: null
+---
+[
+{%- assign first_pdf = true -%}
+{%- for file in site.static_files -%}
+  {%- assign ext = file.extname | downcase -%}
+  {%- if ext == '.pdf' -%}
+    {%- unless first_pdf -%},{%- endunless -%}
+    {{ file.path | jsonify }}
+    {%- assign first_pdf = false -%}
+  {%- endif -%}
+{%- endfor -%}
+]
